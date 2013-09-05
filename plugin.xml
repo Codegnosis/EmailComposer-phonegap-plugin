@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.phonegap.plugins.emailcomposer"
+    version="4.2.1">
+
+    <name>Email Composer</name>
+
+    <description>
+        Provides functionality for sending emails with Attachments.
+    </description>
+
+    <license>MIT</license>
+
+    <engines>
+        <engine name="cordova" version=">=2.0.0" />
+    </engines>    
+
+    <asset src="www/EmailComposer.js" target="EmailComposer.js" />
+
+    <!-- ios -->
+    <platform name="ios">
+        <!-- Cordova < 2.3 -->
+        <plugins-plist key="EmailComposer" string="EmailComposer" />
+
+        <!-- Cordova >= 2.3 -->
+        <config-file target="config.xml" parent="plugins">
+            <plugin name="EmailComposer" value="EmailComposer"/>
+        </config-file>
+        <header-file src="src/ios/EmailComposer.h" />
+        <header-file src="src/ios/EmailComposer.h" />
+
+        <source-file src="src/ios/EmailComposer.m" />
+        <source-file src="src/ios/EmailComposer.m" />
+    </platform>
+</plugin>
