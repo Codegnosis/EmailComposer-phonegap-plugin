@@ -25,7 +25,9 @@
 
         <!-- Cordova >= 2.3 -->
         <config-file target="config.xml" parent="plugins">
-            <plugin name="EmailComposer" value="EmailComposer"/>
+            <feature name="EmailComposer">
+                <param name="ios-package" value="EmailComposer" />
+            </feature>
         </config-file>
         <header-file src="src/ios/EmailComposer.h" />
         <source-file src="src/ios/EmailComposer.m" />
