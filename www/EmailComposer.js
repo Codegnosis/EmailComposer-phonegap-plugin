@@ -1,6 +1,5 @@
 /**
- *
- * Email Composer plugin for PhoneGap/Cordova
+ *Email Composer plugin for PhoneGap/Cordova
  * window.plugins.emailComposer
  *
  * Unified and updated API to be cross-platform by Gal Cohen in 2013.
@@ -14,28 +13,26 @@
  *
  */
 
+cordova.define("cordova/plugin/EmailComposer",
 
-/*
- * Temporary Scope to contain the plugin.
- */
-(function() {
-     /* Get local ref to global PhoneGap/Cordova/cordova object for exec function.
-      - This increases the compatibility of the plugin. */
-     var cordovaRef = window.PhoneGap || window.Cordova || window.cordova; // old to new fallbacks
-     
-    function EmailComposer() {
-        this.resultCallback = null; // Function
-    }
+function(require, exports, module) {
 
-    EmailComposer.ComposeResultType = {
-        Cancelled:0,
-        Saved:1,
-        Sent:2,
-        Failed:3,
-        NotSent:4
-    }
+	var exec = require("cordova/exec");
 
-    // showEmailComposer : all args optional
+	var EmailComposer = function() {
+		this.ComposeResultType = {
+		    Cancelled:0,
+		    Saved:1,
+		    Sent:2,
+		    Failed:3,
+		    NotSent:4
+		};
+	};
+
+	// -------------------------------------------------------------------
+	
+
+	// showEmailComposer : all args optional
     EmailComposer.prototype.showEmailComposer = function(subject, body, toRecipients, ccRecipients, bccRecipients, bIsHTML, attachments) {
         var args = {};
         args.subject = subject ? subject : "";
@@ -57,14 +54,8 @@
         this.resultCallback(res);
     }
 
-    cordovaRef.addConstructor(function() {
-           if (!window.plugins) {
-                window.plugins = {};
-           }
-                                           
-            if (!window.plugins.emailComposer) {
-               window.plugins.emailComposer = new EmailComposer();
-                console.log("**************************** Email Composer ready *************************");
-            }
-        });
-})();/* End of Temporary Scope. */
+	var emailComposer = new EmailComposer();
+	module.exports = emailComposer;
+});
+
+
